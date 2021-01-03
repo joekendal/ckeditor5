@@ -19,7 +19,7 @@ import Image from '@ckeditor/ckeditor5-image/src/image';
 import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
-import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
+import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent';
 import Link from '@ckeditor/ckeditor5-link/src/link';
 import List from '@ckeditor/ckeditor5-list/src/list';
@@ -30,6 +30,21 @@ import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 
+import CodeBlock from '@ckeditor/ckeditor5-code-block/src/codeblock';
+
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
+import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
+import Code from '@ckeditor/ckeditor5-basic-styles/src/code';
+import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
+import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript';
+
+import Title from '@ckeditor/ckeditor5-heading/src/title';
+import Font from '@ckeditor/ckeditor5-font/src/font';
+import HorizontalLine from '@ckeditor/ckeditor5-horizontal-line/src/horizontalline';
+import HtmlEmbed from '@ckeditor/ckeditor5-html-embed/src/htmlembed';
+import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
+
+
 export default class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
@@ -39,6 +54,11 @@ ClassicEditor.builtinPlugins = [
 	Autoformat,
 	Bold,
 	Italic,
+	Underline, 
+	Strikethrough, 
+	Code, 
+	Subscript, 
+	Superscript,
 	BlockQuote,
 	CKFinder,
 	EasyImage,
@@ -48,6 +68,7 @@ ClassicEditor.builtinPlugins = [
 	ImageStyle,
 	ImageToolbar,
 	ImageUpload,
+	Base64UploadAdapter,
 	Indent,
 	Link,
 	List,
@@ -56,7 +77,13 @@ ClassicEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	TextTransformation
+	TextTransformation,
+	CodeBlock,
+	BlockQuote,
+	Title,
+	Font,
+	HorizontalLine,
+	HtmlEmbed
 ];
 
 // Editor configuration.
@@ -68,19 +95,44 @@ ClassicEditor.defaultConfig = {
 			'bold',
 			'italic',
 			'link',
+			'fontFamily',
+			'fontSize',
 			'bulletedList',
 			'numberedList',
 			'|',
 			'indent',
 			'outdent',
 			'|',
+			'codeBlock',
+			'htmlEmbed',
+			'|',
 			'imageUpload',
 			'blockQuote',
 			'insertTable',
 			'mediaEmbed',
+			'horizontalLine',
+			'|',
 			'undo',
 			'redo'
 		]
+	},
+	indentBlock: {
+		offset: 1,
+		unit: 'em'
+	},
+	fontSize: {
+		options: [
+			9,
+			11,
+			13,
+			'default',
+			17,
+			19,
+			21
+		]
+	},
+	fontFamily: {
+		supportAllValues: true,
 	},
 	image: {
 		toolbar: [
@@ -97,6 +149,11 @@ ClassicEditor.defaultConfig = {
 			'mergeTableCells'
 		]
 	},
+	htmlEmbed: {
+		showPreviews: true,
+	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'en'
+	language: 'en',
+	
+	placeholder: 'Type your body here',
 };
