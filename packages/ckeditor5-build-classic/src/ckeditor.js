@@ -38,7 +38,6 @@ import Code from '@ckeditor/ckeditor5-basic-styles/src/code';
 import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
 import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript';
 
-import Title from '@ckeditor/ckeditor5-heading/src/title';
 import Font from '@ckeditor/ckeditor5-font/src/font';
 import HorizontalLine from '@ckeditor/ckeditor5-horizontal-line/src/horizontalline';
 import HtmlEmbed from '@ckeditor/ckeditor5-html-embed/src/htmlembed';
@@ -80,7 +79,6 @@ ClassicEditor.builtinPlugins = [
 	TextTransformation,
 	CodeBlock,
 	BlockQuote,
-	Title,
 	Font,
 	HorizontalLine,
 	HtmlEmbed
